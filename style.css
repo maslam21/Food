@@ -1,0 +1,76 @@
+styles.css
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #f2f2f2;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+}
+nav{
+display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px;
+}
+#searchInput {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ff6e00;
+  padding: 5px;
+  width: 300px;
+  height: 50px;
+  border-radius: 50px;
+  margin: 10px;
+  position: relative;
+  transition: width 1.5s;
+}
+.input {
+  margin: 10px 50px;
+  margin-left: 20px;
+  width: 100%;
+  color: #ff6e00;
+  border: none;
+  background: transparent;
+  outline: none;
+  transition-delay: 0.5s;
+}
+#foodList {
+  margin-top: 20px;
+}
+
+.foodItem {
+  border-bottom: 1px solid #cccccc;
+  padding: 10px;
+}
+
+#foodDetails {
+  padding: 20px;
+}
+
+#cartItems {
+  margin-top: 20px;
+}
+
+.cartItem {
+  border-bottom: 1px solid #cccccc;
+  padding: 10px;
+}
+
+#totalPrice {
+  text-align: right;
+  margin-top: 10px;
+}
+
+#checkoutBtn {
+  display: block;
+  margin-top: 10px;
+}
