@@ -12,9 +12,7 @@ header {
   text-align: center;
 }
 
-h1 {
-  margin: 0;
-}
+
 nav{
 display: flex;
     justify-content: space-around;
@@ -22,9 +20,11 @@ display: flex;
     margin: 20px;
 }
 #searchInput {
+  color: #0812a1;
+  background-color: #141617;
   display: flex;
   align-items: center;
-  border: 1px solid #ff6e00;
+  border: 1px solid #2f00ff3d;
   padding: 5px;
   width: 300px;
   height: 50px;
@@ -37,7 +37,7 @@ display: flex;
   margin: 10px 50px;
   margin-left: 20px;
   width: 100%;
-  color: #ff6e00;
+  color: #0fd515;
   border: none;
   background: transparent;
   outline: none;
@@ -48,7 +48,7 @@ display: flex;
 }
 
 .foodItem {
-  border-bottom: 1px solid #cccccc;
+  border-bottom: 1px solid #0f2188;
   padding: 10px;
 }
 
@@ -74,3 +74,47 @@ display: flex;
   display: block;
   margin-top: 10px;
 }
+.text-danger {
+  color: red;
+}
+.text-danger{
+  width:300px;
+  height:400px;
+  border:1px solid #ccc;
+  position: relative;
+  margin: 0 auto;
+}
+button{
+    border: 0;
+    cursor: pointer;
+  position: absolute;
+  right:10px;
+  top:10px;
+  padding:0;
+  &:focus{
+    outline:none;
+  }
+  svg{
+    fill:transparent;
+  }
+  &.is-active{
+    svg{
+      fill:#191919;
+      animation: beat cubic-bezier(0.04, 0.4, 0.5, 0.95) 450ms forwards 1;
+    }
+  }
+}
+
+@keyframes beat {
+  
+    30% {
+      opacity:1;
+      transform: scale(1.4);
+    }
+    50% {
+      transform: scale(0.8);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
