@@ -74,47 +74,31 @@ display: flex;
   display: block;
   margin-top: 10px;
 }
-.text-danger {
-  color: red;
-}
-.text-danger{
-  width:300px;
-  height:400px;
-  border:1px solid #ccc;
-  position: relative;
-  margin: 0 auto;
-}
-button{
+
+  .product {
+    width: 300px; 
+    height: 400px; 
+    border: 1px solid #ccc;
+    position: relative;
+    margin: 0 auto;
+  }
+  
+  .wishlist-button {
     border: 0;
     cursor: pointer;
-  position: absolute;
-  right:10px;
-  top:10px;
-  padding:0;
-  &:focus{
-    outline:none;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    padding: 0;
+    outline: none; /* Remove default button outline */
   }
-  svg{
-    fill:transparent;
-  }
-  &.is-active{
-    svg{
-      fill:#191919;
-      animation: beat cubic-bezier(0.04, 0.4, 0.5, 0.95) 450ms forwards 1;
-    }
-  }
-}
-
-@keyframes beat {
   
-    30% {
-      opacity:1;
-      transform: scale(1.4);
-    }
-    50% {
-      transform: scale(0.8);
-    }
-    100% {
-      transform: scale(1);
-    }
+  .wishlist-button i {
+    color: #ccc; /* Adjust default color */
+    transition: color 0.2s ease-in-out; /* Smooth color change */
   }
+  
+  .wishlist-button.active i {
+    color: red; /* Wishlist color */
+  }
+  
