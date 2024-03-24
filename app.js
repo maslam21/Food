@@ -1,4 +1,5 @@
 
+
 const foodData = [
   { 
     name: "Pizza",
@@ -110,14 +111,10 @@ function addToCart(food) {
 
   alert(`${food.name} has been added to the cart! (Quantity: ${existingItem ? existingItem.quantity : 1})`);
 }
-
-
 function addToWishlist(food) {
   
-  const wishlistItem = {
-    name: food.name,
-    price: food.price
-  };
+  const clickedButton = event.currentTarget; // Get the clicked button
+  clickedButton.classList.toggle('active'); // Toggle button class
 
   const wishlistItems = JSON.parse(localStorage.getItem('wishlist')) || [];
 
@@ -127,30 +124,36 @@ function addToWishlist(food) {
     wishlistItems.splice(wishlistItems.indexOf(existingItem), 1);
     alert(`${food.name} has been removed from the wishlist!`);
   } else {
-    wishlistItems.push(wishlistItem);
+    wishlistItems.push({ name: food.name, price: food.price });
     alert(`${food.name} has been added to the wishlist!`);
   }
 
   localStorage.setItem('wishlist', JSON.stringify(wishlistItems));
-  function updateWishlistButtonState(foodName) {
-    const wishlistItems = JSON.parse(localStorage.getItem('wishlist')) || [];
-    const wishlistButtons = document.querySelectorAll(".wishlist-btn");
-  
-    // wishlistButtons.forEach(button => {
-    //   const buttonFoodName = button.closest(".card").querySelector(".card-title").textContent;
-    //   if (buttonFoodName === foodName) {
-    //     const heartIcon = button.querySelector("i.fas.fa-heart"); // Target the heart icon
-    //     if (wishlistItems.some(item => item.name === foodName)) {
-    //       heartIcon.classList.add("text-danger"); // Solid red color for existing items
-    //     } else {
-    //       heartIcon.classList.remove("text-danger"); // Remove red color for non-existing items
-    //     }
-    //   }
-    // }
-  //);
-  }
 
+  renderWishlist(); // Call renderWishlist to update wishlist.html
 }
+
+function renderWishlist() {
+  const wishlistItems = JSON.parse(localStorage.getItem('wishlist')) || [];
+  const wishlistContainer = document.getElementById("wishlist-container"); // Replace with your wishlist container ID
+  wishlistContainer.innerHTML = ""; // Clear existing content
+
+  if (wishlistItems.length === 0) {
+    wishlistContainer.innerHTML = "Your wishlist is empty.";
+  } else {
+    wishlistItems.forEach(item => {
+      const wishlistItem = document.createElement("div");
+      wishlistItem.classList.add("wishlist-item"); // Add your desired styles for wishlist items
+      wishlistItem.innerHTML = `
+        <p>${item.name} - ${item.price}</p>
+        `;
+      wishlistContainer.appendChild(wishlistItem);
+    });
+  }
+}
+
+
+
 
 
 function handleSearch() {
@@ -164,9 +167,11 @@ function renderWishlist() {
   const wishlistItems = JSON.parse(localStorage.getItem('wishlist')) || [];
 }
 
-document.getElementById("wishlistLink").addEventListener("click", function() {
+document.getElementById("wishlistLink")?.addEventListener("click", function() {
   renderWishlist();
+
+
   window.location.href = "wishlist.html";
 });
-document.getElementById("searchInput").addEventListener("input", handleSearch); 
+document.getElementById("searchInput")?.addEventListener("input", handleSearch); 
 renderFoodList(foodData);
